@@ -1,0 +1,11 @@
+extends ../layouts/application.pug
+
+block header
+  = 'Создание поста'
+
+  form(action=`/posts`, method="POST")
+    label(for="title") Заголовок:
+    input(type="text", name="title")
+    label(for="text") Содержание:
+    textarea(name="text")
+    button(type="submit") Сохранить

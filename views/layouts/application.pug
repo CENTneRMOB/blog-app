@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Блог
+    link(rel="stylesheet" href="/css/style.css")
+  body
+    header
+      h1 Блог
+      nav
+        ul
+          li
+            a(href="/") Домой
+          li
+            a(href="/posts") Посты
+      if user
+        p Привет, #{user.name}!
+        form(action="/logout" method="POST")
+          button(type="submit") Выйти
+      else
+        a(href="/sessions/new") Войти
+        a(href="/users/new") Регистрация
+    main
+        block header
+    block content
+    footer
+      p &copy; 2023 Приложение блога

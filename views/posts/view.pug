@@ -1,0 +1,18 @@
+extends ../layouts/application.pug
+
+block content
+  h1.my-4
+      h2= post.title
+      p= post.text
+      hr
+      .container
+        .row.p-1
+          .col= Автор
+          .col= post.user.nickname
+        .row.p-1
+          .col= 'Дата создания'
+          .col= post.createdAt.toLocaleDateString('ru-RU', { dateStyle: 'medium' })
+        .row.p-1
+          .col
+            a(href=`/posts/${post.id}/edit`) Изменить
+            a(href=`/posts/${post.id}`, _method="delete") Удалить

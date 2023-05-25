@@ -1,0 +1,37 @@
+extends ../layouts/application.pug
+
+block content
+  a(href="/posts/new") Создать пост
+  table.table.table-striped
+    thead
+      tr
+        th id
+        th Заголовок
+        th Автор
+        th Дата создания
+    tbody
+      each post in posts
+        tr
+          td= post.id
+          td
+            a(href=`/posts/${post.id}`)= post.title
+          td= post.user.nickname
+          td= post.createdAt.toLocaleDateString('ru-RU', { dateStyle: 'medium' })
+          td
+            a(href=`/posts/${post.id}/edit`) Изменить
+
+  nav.pagination
+    ul
+      - if (currentPage > 1)
+        li
+          a(href=`/posts?page=${currentPage-1}`) Предыдущая
+      each page in pages
+        - if (page === currentPage)
+          li.active
+            a(href=`/posts?page=${page}`)= page
+        - else
+          li
+            a(href=`/posts?page=${page}`)= page
+      - if (currentPage < pageCount)
+        li
+          a(href=`/posts?page=${currentPage+1}`) Следующая

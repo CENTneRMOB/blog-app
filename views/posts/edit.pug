@@ -1,0 +1,14 @@
+extends ../layouts/application.pug
+
+block header
+  = 'Изменение поста'
+
+  form(action=`/posts/${post.id}`, method="PATCH")
+    input(type="hidden", name="_method", value="PATCH")
+    label(for="title") Заголовок:
+    input(type="text", name="title", value=post.title)
+    label(for="user") Автор:
+    input(type="text", name="user", value=post.user.nickname, readonly)
+    label(for="text") Содержание:
+    textarea(name="text")= post.text
+    button(type="submit") Сохранить

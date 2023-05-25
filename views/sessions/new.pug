@@ -1,0 +1,11 @@
+extends ../layouts/application.pug
+
+block header
+  = 'Вход'
+
+  form(action=`/sessions`, method="POST")
+    label(for="email") Почта:
+    input(type="text", name="email")
+    label(for="password") Пароль:
+    input(type="text", name="password")
+    button(type="submit") Войти

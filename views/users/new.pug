@@ -1,0 +1,13 @@
+extends ../layouts/application.pug
+
+block header
+  = 'Регистрация'
+
+  form(action=`/users`, method="POST")
+    label(for="email") Почта:
+    input(type="text", name="email")
+    label(for="password") Пароль:
+    input(type="text", name="password")
+    label(for="nickname") Никнейм:
+    input(type="text", name="nickname")
+    button(type="submit") Зарегистрироваться
